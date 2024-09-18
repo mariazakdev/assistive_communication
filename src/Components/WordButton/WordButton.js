@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './WordButton.scss'; // Import the SASS file
 
 // Import the sound files statically
@@ -27,23 +27,43 @@ export const images = {
 };
 
 function WordButton({ word, onClick }) {
+  const [isActive, setIsActive] = useState(false); // Track button active state
+  const [audio, setAudio] = useState(null); // Store audio object
+
   const playSound = () => {
     const sound = sounds[word];
     if (sound) {
-      const audio = new Audio(sound);
-      audio.play();
+      const newAudio = new Audio(sound);
+      setAudio(newAudio);
+      newAudio.play();
     } else {
       console.error(`Sound file not found for word: ${word}`);
     }
   };
 
+  const stopSound = () => {
+    if (audio) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  };
+
   const handleClick = () => {
-    playSound(); // Play sound when button is clicked
-    onClick(word); // Callback for adding the word
+    if (isActive) {
+      stopSound(); // Stop sound if active
+      setIsActive(false); // Deactivate button
+    } else {
+      playSound(); // Play sound if not active
+      setIsActive(true); // Activate button
+      onClick(word); // Callback for adding the word
+    }
   };
 
   return (
-    <button className="word-button" onClick={handleClick}>
+    <button
+      className={`word-button ${isActive ? 'active' : ''}`} // Add class when active
+      onClick={handleClick}
+    >
       <img
         src={images[word] || 'https://via.placeholder.com/100'}
         alt={word}

@@ -12,13 +12,20 @@ const words = Object.keys(sounds);
 
 function App() {
   const [sentence, setSentence] = useState([]);
+  const [activeWord, setActiveWord] = useState(null); // Track the active word
 
   const handleWordClick = (word) => {
-    setSentence([...sentence, word]); // Append the clicked word to the sentence
+    if (word === activeWord) {
+      setActiveWord(null); // Deactivate the button if clicked again
+    } else {
+      setActiveWord(word); // Activate the clicked button
+      setSentence([...sentence, word]); // Append the clicked word to the sentence
+    }
   };
 
   const clearSentence = () => {
     setSentence([]); // Clear the sentence
+    setActiveWord(null); // Deactivate any active button
   };
 
   const speakSentence = () => {
@@ -29,7 +36,7 @@ function App() {
   return (
     <div className="app">
       <h1>Assistive Communication</h1>
-      <WordGrid words={words} onWordClick={handleWordClick} />
+      <WordGrid words={words} onWordClick={handleWordClick} activeWord={activeWord} />
       <SentenceBuilder sentence={sentence} />
       <ControlPanel onSpeak={speakSentence} onClear={clearSentence} />
     </div>

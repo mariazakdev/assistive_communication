@@ -1,8 +1,11 @@
 // WordGrid.scss
 
 .word-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
   gap: 15px;
   justify-content: center;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(30, 14, 14);
 }
