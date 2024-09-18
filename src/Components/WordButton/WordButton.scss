@@ -1,0 +1,40 @@
+// WordButton.scss
+
+.word-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px; // Square size
+  height: 100px; // Square size
+  margin: 10px;
+  padding: 10px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+  img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover; // Ensure image fits within the button
+  }
+
+  span {
+    margin-top: 5px;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+  }
+
+  &:hover {
+    background-color: #e0e0e0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  &:active {
+    background-color: #d0d0d0;
+    transform: scale(0.98);
+  }
+}
