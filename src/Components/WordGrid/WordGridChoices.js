@@ -8,8 +8,6 @@ import { images } from '../WordButton/WordButtonChoices'; // Import the images o
 function WordGridChoices({ words, onWordClick }) {
   const [selectedWords, setSelectedWords] = useState([null, null]);
   const [currentIndex, setCurrentIndex] = useState(0); // To track which word to replace (0 or 1)
-  const [draggedWord, setDraggedWord] = useState(null); // To track the word being dragged
-  const [touchPosition, setTouchPosition] = useState({ x: 0, y: 0 }); // To track the position of touch
 
   const handleWordClick = (word) => {
     setSelectedWords((prevSelectedWords) => {
@@ -26,32 +24,10 @@ function WordGridChoices({ words, onWordClick }) {
     }
   };
 
-  const handleDragStart = (word) => {
-    // Track the word being dragged
-    setDraggedWord(word);
-  };
-
-  const handleTouchStart = (e, word) => {
-    // Store touch starting position
-    const touch = e.touches[0];
-    setTouchPosition({ x: touch.clientX, y: touch.clientY });
-    setDraggedWord(word);
-  };
-
-  const handleTouchMove = (e) => {
-    e.preventDefault(); // Prevent the default scroll action while dragging
-    const touch = e.touches[0];
-    const dx = touch.clientX - touchPosition.x;
-    const dy = touch.clientY - touchPosition.y;
-    // Optionally you can track the move or show a preview of the word being dragged
-  };
-
-  const handleTouchEnd = () => {
-    // Handle touch end by simulating a drop of the word
-    if (draggedWord) {
-      handleWordClick(draggedWord); // Simulate clicking the dragged word to place it
-    }
-    setDraggedWord(null); // Reset the dragged word
+  const handleDragStart = (e, word) => {
+    // Create an object with the word and image and pass it as JSON
+    const data = JSON.stringify({ word, image: images[word] });
+    e.dataTransfer.setData('application/json', data); // Use 'application/json' MIME type for structured data
   };
 
   const clearChoices = () => {
@@ -71,14 +47,7 @@ function WordGridChoices({ words, onWordClick }) {
       <div className="word-grid-choice">
         {/* Word buttons grid */}
         {words.map((word, index) => (
-          <WordButtonChoice
-            key={index}
-            word={word}
-            onClick={() => handleWordClick(word)}
-            onTouchStart={(e) => handleTouchStart(e, word)} // Handle touch start
-            onTouchMove={handleTouchMove} // Prevent scrolling while dragging
-            onTouchEnd={handleTouchEnd} // Handle touch end
-          />
+          <WordButtonChoice key={index} word={word} onClick={() => handleWordClick(word)} />
         ))}
       </div>
 
@@ -90,9 +59,8 @@ function WordGridChoices({ words, onWordClick }) {
             <div
               key={index}
               className="selected-word"
-              onTouchStart={(e) => handleTouchStart(e, word)} // Handle touch start for selected words
-              onTouchMove={handleTouchMove} // Handle touch move for selected words
-              onTouchEnd={handleTouchEnd} // Handle touch end for selected words
+              draggable
+              onDragStart={(e) => handleDragStart(e, word)} // Enable dragging
             >
               {word ? (
                 <>
@@ -117,4 +85,3 @@ function WordGridChoices({ words, onWordClick }) {
 }
 
 export default WordGridChoices;
-
