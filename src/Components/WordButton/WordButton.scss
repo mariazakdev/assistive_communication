@@ -5,8 +5,8 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 200px; // Square size
-  height: 200px; // Square size
+  max-width: 200px; // Square size
+  max-height: 200px; // Square size
   margin: 10px;
   padding: 10px;
   border: 2px solid #333;
@@ -16,8 +16,8 @@
   transition: background-color 0.3s ease, box-shadow 0.3s ease;
 
   img {
-    width: 60px;
-    height: 60px;
+    width: 100px;
+    height: 70px;
     object-fit: cover; // Ensure image fits within the button
   }
 

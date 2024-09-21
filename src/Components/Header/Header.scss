@@ -1,0 +1,31 @@
+.header {
+    background-color: #333;
+    padding: 1rem;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: center;
+  }
+  
+  .nav-list {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-item {
+    margin: 0 1rem;
+  }
+  
+  .nav-item a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 0.5rem;
+  }
+  
+  .nav-item a.active {
+    border-bottom: 2px solid yellow; /* Indicate active link */
+  }

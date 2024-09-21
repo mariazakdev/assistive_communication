@@ -1,44 +1,21 @@
-import React, { useState } from 'react';
-import WordGrid from './Components/WordGrid/WordGrid';
-import SentenceBuilder from './Components/SentenceBuilder/SentenceBuilder';
-import ControlPanel from './Components/ControlPanel/ControlPanel';
-
-// Import sounds and images
-import { sounds } from './Components/WordButton/WordButton'; 
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import Header from './Components/Header/Header';
 
 import './App.scss'; 
-
-const words = Object.keys(sounds);
+import HomePage from './Pages/HomePage';
+import ChoicesPage from './Pages/ChoicesPage';
 
 function App() {
-  const [sentence, setSentence] = useState([]);
-  const [activeWord, setActiveWord] = useState(null); // Track the active word
-
-  const handleWordClick = (word) => {
-    if (word === activeWord) {
-      setActiveWord(null); // Deactivate the button if clicked again
-    } else {
-      setActiveWord(word); // Activate the clicked button
-      setSentence([...sentence, word]); // Append the clicked word to the sentence
-    }
-  };
-
-  const clearSentence = () => {
-    setSentence([]); // Clear the sentence
-    setActiveWord(null); // Deactivate any active button
-  };
-
-  const speakSentence = () => {
-    const utterance = new SpeechSynthesisUtterance(sentence.join(' '));
-    window.speechSynthesis.speak(utterance); // Use the browser's speech synthesis API
-  };
-
   return (
     <div className="app">
-      <h1>Assistive Communication</h1>
-      <WordGrid words={words} onWordClick={handleWordClick} activeWord={activeWord} />
-      <SentenceBuilder sentence={sentence} />
-      <ControlPanel onSpeak={speakSentence} onClear={clearSentence} />
+      <Router> {/* Ensure Router wraps everything */}
+        <Header /> {/* NavLink inside Header needs to be inside Router */}
+        <Routes>
+          <Route path="/songs" element={<HomePage />} />
+          <Route path="/choices" element={<ChoicesPage />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
