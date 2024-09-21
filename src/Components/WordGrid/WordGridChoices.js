@@ -8,8 +8,8 @@ import { images } from '../WordButton/WordButtonChoices'; // Import the images o
 function WordGridChoices({ words, onWordClick }) {
   const [selectedWords, setSelectedWords] = useState([null, null]);
   const [currentIndex, setCurrentIndex] = useState(0); // To track which word to replace (0 or 1)
-  const [draggedWord, setDraggedWord] = useState(null); // For tracking which word is dragged on touch devices
-  const [isDragging, setIsDragging] = useState(false); // To track whether we are currently dragging
+  const [draggedWord, setDraggedWord] = useState(null); // To track the word being dragged
+  const [touchPosition, setTouchPosition] = useState({ x: 0, y: 0 }); // To track the position of touch
 
   const handleWordClick = (word) => {
     setSelectedWords((prevSelectedWords) => {
@@ -26,30 +26,32 @@ function WordGridChoices({ words, onWordClick }) {
     }
   };
 
-  const handleDragStart = (e, word) => {
-    e.dataTransfer.setData('text/plain', word); // Set the word being dragged
+  const handleDragStart = (word) => {
+    // Track the word being dragged
     setDraggedWord(word);
   };
 
-  // For touch screen start
-  const handleTouchStart = (word) => {
+  const handleTouchStart = (e, word) => {
+    // Store touch starting position
+    const touch = e.touches[0];
+    setTouchPosition({ x: touch.clientX, y: touch.clientY });
     setDraggedWord(word);
-    setIsDragging(true); // Indicate dragging has started
   };
 
-  // For touch screen move
   const handleTouchMove = (e) => {
-    // Optional: You can use this event to give visual feedback while dragging, e.g., showing the word move
-    e.preventDefault(); // Prevent default touch behavior (scrolling)
+    e.preventDefault(); // Prevent the default scroll action while dragging
+    const touch = e.touches[0];
+    const dx = touch.clientX - touchPosition.x;
+    const dy = touch.clientY - touchPosition.y;
+    // Optionally you can track the move or show a preview of the word being dragged
   };
 
-  // For touch screen end
   const handleTouchEnd = () => {
+    // Handle touch end by simulating a drop of the word
     if (draggedWord) {
-      handleWordClick(draggedWord); // Replace the word in selectedWords
+      handleWordClick(draggedWord); // Simulate clicking the dragged word to place it
     }
-    setDraggedWord(null);
-    setIsDragging(false); // Reset the dragging state
+    setDraggedWord(null); // Reset the dragged word
   };
 
   const clearChoices = () => {
@@ -72,12 +74,10 @@ function WordGridChoices({ words, onWordClick }) {
           <WordButtonChoice
             key={index}
             word={word}
-            onClick={() => handleWordClick(word)} // Handle click
-            draggable
-            onDragStart={(e) => handleDragStart(e, word)} // Handle desktop drag start
-            onTouchStart={() => handleTouchStart(word)} // Handle touch start
-            onTouchMove={handleTouchMove} // Handle touch move (dragging)
-            onTouchEnd={handleTouchEnd} // Handle touch end (drop)
+            onClick={() => handleWordClick(word)}
+            onTouchStart={(e) => handleTouchStart(e, word)} // Handle touch start
+            onTouchMove={handleTouchMove} // Prevent scrolling while dragging
+            onTouchEnd={handleTouchEnd} // Handle touch end
           />
         ))}
       </div>
@@ -89,12 +89,10 @@ function WordGridChoices({ words, onWordClick }) {
           {selectedWords.map((word, index) => (
             <div
               key={index}
-              className={`selected-word ${isDragging && draggedWord === word ? 'dragging' : ''}`} // Add class for visual feedback
-              draggable
-              onDragStart={(e) => handleDragStart(e, word)} // Handle desktop drag start
-              onTouchStart={() => handleTouchStart(word)} // Handle touch start
-              onTouchMove={handleTouchMove} // Handle touch move (dragging)
-              onTouchEnd={handleTouchEnd} // Handle touch end (drop)
+              className="selected-word"
+              onTouchStart={(e) => handleTouchStart(e, word)} // Handle touch start for selected words
+              onTouchMove={handleTouchMove} // Handle touch move for selected words
+              onTouchEnd={handleTouchEnd} // Handle touch end for selected words
             >
               {word ? (
                 <>
@@ -119,3 +117,4 @@ function WordGridChoices({ words, onWordClick }) {
 }
 
 export default WordGridChoices;
+
