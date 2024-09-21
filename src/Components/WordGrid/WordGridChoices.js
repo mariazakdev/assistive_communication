@@ -53,7 +53,7 @@ function WordGridChoices({ words, onWordClick }) {
 
       {/* Separate div for selected words */}
       <div className="selected-words-container">
-        <h3>Selected Words</h3>
+        <h3>Which one?</h3>
         <div className="selected-words">
           {selectedWords.map((word, index) => (
             <div
