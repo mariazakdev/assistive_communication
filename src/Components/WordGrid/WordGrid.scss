@@ -18,6 +18,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  background-color: rgb(30, 14, 14);
-  overflow-y: auto;
+  background: rgb(255,255,255);
+background: -moz-linear-gradient(90deg, rgba(255,255,255,0.756827731092437) 0%, rgba(228,16,16,1) 37%, rgba(228,16,16,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(255,255,255,0.756827731092437) 0%, rgba(228,16,16,1) 37%, rgba(228,16,16,1) 100%);
+background: linear-gradient(90deg, rgba(255,255,255,0.756827731092437) 0%, rgba(228,16,16,1) 37%, rgba(228,16,16,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#e41010",GradientType=1);
 }

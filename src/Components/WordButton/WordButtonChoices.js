@@ -20,9 +20,9 @@ import medical from '../../Assets/Sounds/Doctor_tools.m4a';
 import musical_book from '../../Assets/Sounds/Musical_book.m4a';
 import phone from '../../Assets/Sounds/Phone.m4a';
 import shaker from '../../Assets/Sounds/Shaker.m4a';
-import utensils from '../../Assets/Sounds/Eat.m4a';
-import songglove from '../../Assets/Sounds/Glove.m4a';
-import woodanimals from '../../Assets/Sounds/Animals.m4a';
+import eating_tools from '../../Assets/Sounds/Eat.m4a';
+import glove from '../../Assets/Sounds/Glove.m4a';
+import animals from '../../Assets/Sounds/Animals.m4a';
 
 
 // Import images or use placeholders for buttons
@@ -66,9 +66,9 @@ export const sounds = {
   musical_book,
   phone,
 shaker,
-utensils,
-songglove,
-woodanimals,
+eating_tools,
+glove,
+animals,
   
 };
 
@@ -90,9 +90,9 @@ woodanimals,
     musical_book: musical_bookimg,
     phone: phoneimg,
     shaker: shakerimg,
-    utensils: utensilsimg,
-    songglove: songgloveimg,
-    woodanimals: woodanimalsimg,
+    eating_tools: utensilsimg,
+    glove: songgloveimg,
+    animals: woodanimalsimg,
   };
 
 

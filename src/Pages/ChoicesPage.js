@@ -34,9 +34,9 @@ function ChoicesPage() {
   };
 
   return (
-    <div className="home">
+    <div className="home-choices">
       <h1>My Choices</h1>
-      <WordGridSongs words={words} onWordClick={handleWordClick} activeWord={activeWord} />
+      <WordGridSongs words={words} onWordClick={handleWordClick} activeWord={activeWord} className="" />
       <SentenceBuilder sentence={sentence} />
       <ControlPanel onSpeak={speakSentence} onClear={clearSentence} />
     </div>
