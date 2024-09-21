@@ -1,8 +1,26 @@
 import React, { useState } from 'react';
+import i_choose from '../../Assets/Sounds/I_choose.m4a'; // Import the "I choose" sound
 import './SentenceBuilder.scss';
+
+// Import the sound files for the words
+import { sounds } from '../WordButton/WordButtonChoices'; // Assuming sounds are imported from here
 
 function ChoiceBuilder({ words }) {
   const [droppedWords, setDroppedWords] = useState([]);
+
+  // Play the "I choose" sound, followed by the word-specific sound
+  const playIChooseAndWordSound = (word) => {
+    const audioChoose = new Audio(i_choose); // Play "I choose" sound
+    const audioWord = new Audio(sounds[word]); // Play word-specific sound after "I choose"
+
+    audioChoose.play();
+
+    audioChoose.onended = () => {
+      if (audioWord) {
+        audioWord.play(); // Play the word sound after "I choose" finishes
+      }
+    };
+  };
 
   const handleDragOver = (e) => {
     e.preventDefault(); // Necessary to allow drop
@@ -14,6 +32,7 @@ function ChoiceBuilder({ words }) {
 
     if (droppedData && !droppedWords.some(word => word.word === droppedData.word)) {
       setDroppedWords([...droppedWords, droppedData]); // Add word and image to droppedWords array
+      playIChooseAndWordSound(droppedData.word); // Play the "I choose" sound and then the word sound
     }
   };
 
