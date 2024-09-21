@@ -1,0 +1,67 @@
+.choice-builder {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background: rgb(255,255,255);
+background: -moz-linear-gradient(90deg, rgba(255,255,255,0.756827731092437) 0%, rgba(16,17,228,1) 37%, rgba(16,17,228,1) 100%);
+background: -webkit-linear-gradient(90deg, rgba(255,255,255,0.756827731092437) 0%, rgba(16,17,228,1) 37%, rgba(16,17,228,1) 100%);
+background: linear-gradient(90deg, rgba(255,255,255,0.756827731092437) 0%, rgba(16,17,228,1) 37%, rgba(16,17,228,1) 100%);
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#1011e4",GradientType=1);
+border: 2px dashed #ccc;
+padding: 20px;
+text-align: center;
+background-color: #f9f9f9;
+min-height: 150px;
+padding-left: 200px;
+padding-right: 200px;
+
+.chosen-words {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  justify-content: center;
+
+  .chosen-word {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    background-color: #ccc;
+    border-radius: 10px;
+    border: 2px solid #333;
+
+    img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+    }
+
+    span {
+      margin-top: 5px;
+      font-size: 14px;
+      color: #333;
+    }
+  }
+}
+
+
+}
+.clear-button {
+  background-color: #1011e4; /* Use the same color as the gradient */
+  color: white;
+  padding: 10px 20px;
+  border: 2px solid #1011e4; /* Matching border color */
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease; /* Smooth hover effect */
+  margin-top: 20px; /* Add some spacing from the builder area */
+}
+
+.clear-button:hover {
+  background-color: white; /* Invert colors on hover */
+  color: #1011e4; /* Matching text color */
+}
