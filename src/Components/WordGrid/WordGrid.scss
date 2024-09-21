@@ -127,3 +127,10 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endCo
     }
   }
 }
+.selected-word {
+  cursor: pointer;
+  &.dragging {
+    opacity: 0.5; // Reduce opacity to indicate dragging
+    transform: scale(1.1); // Scale up slightly for visual feedback
+  }
+}
