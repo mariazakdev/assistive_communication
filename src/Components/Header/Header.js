@@ -1,9 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import './Header.scss';
 
 function Header() {
   return (
-    <nav>
+    <nav className='nav'>
       <ul>
         <li>
           <NavLink to="/songs">Songs</NavLink>

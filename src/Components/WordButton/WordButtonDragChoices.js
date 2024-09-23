@@ -227,7 +227,7 @@ function WordButtonChoices({ word, onClick }) {
   return (
     <Draggable>
       <button
-        className={`word-button ${isActive ? 'active' : ''}`}
+        className={`word-button-drag ${isActive ? 'active' : ''}`}
         onClick={handleInteraction} // Handle mouse clicks
         onTouchStart={handleInteraction} // Handle touch interactions
       >

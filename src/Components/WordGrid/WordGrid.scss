@@ -24,7 +24,16 @@ background: -webkit-linear-gradient(90deg, rgba(255,255,255,0.756827731092437) 0
 background: linear-gradient(90deg, rgba(255,255,255,0.756827731092437) 0%, rgba(228,16,16,1) 37%, rgba(228,16,16,1) 100%);
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#e41010",GradientType=1);
 }
-
+.word-grid-drag {
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  gap: 15px;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  background-color: rgb(14, 30, 18);
+  overflow-y: auto;
+}
 .word-grid-choice-drag {
   // display: grid;
   // grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
@@ -33,6 +42,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endCo
   flex-direction: row;
   flex-wrap: wrap;
   background: rgb(12, 177, 92);
+  padding-bottom: 60rem;
 
 }
 // .selected-words-container {
