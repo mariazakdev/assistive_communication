@@ -25,7 +25,16 @@ background: linear-gradient(90deg, rgba(255,255,255,0.756827731092437) 0%, rgba(
 filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#e41010",GradientType=1);
 }
 
+.word-grid-choice-drag {
+  // display: grid;
+  // grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  background: rgb(12, 177, 92);
 
+}
 // .selected-words-container {
 //   margin-top: 20px;
   

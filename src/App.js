@@ -5,6 +5,7 @@ import './App.scss';
 import HomePage from './Pages/HomePage';
 import ChoicesPage from './Pages/ChoicesPage';
 import DrawPage from './Pages/DrawPage';
+import DragPage from './Pages/DragPage';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route path="/songs" element={<HomePage />} />
           <Route path="/choices" element={<ChoicesPage />} />
           <Route path="/draw" element={<DrawPage />} />
+          <Route path="/drag" element={<DragPage />} />
 
         </Routes>
       </div>

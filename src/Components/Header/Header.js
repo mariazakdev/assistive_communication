@@ -10,10 +10,13 @@ function Header() {
         </li>
         <li>
           <NavLink to="/choices">Choices</NavLink>
-        </li><li>
+        </li>
+        <li>
           <NavLink to="/draw">Draw</NavLink>
         </li>
-
+        <li>
+          <NavLink to="/drag">Drag</NavLink>
+        </li>
       </ul>
     </nav>
   );
