@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import WordGridSongs from '../Components/WordGrid/WordGridSongs';
 import SentenceBuilder from '../Components/SentenceBuilder/SentenceBuilder';
 import ControlPanel from '../Components/ControlPanel/ControlPanel';
+import Draggable from '../Components/Draggable/Draggable';
 
 // Import sounds and images
 import { sounds } from '../Components/WordButton/WordButtonSongs'; 

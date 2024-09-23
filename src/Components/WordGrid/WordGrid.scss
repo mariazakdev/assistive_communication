@@ -26,7 +26,6 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endCo
 }
 
 
-
 // .selected-words-container {
 //   margin-top: 20px;
   
@@ -36,9 +35,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endCo
 
 //   .selected-words {
 //     display: flex;
-//     justify-content: space-around;
-//     align-items: center;
-//     gap: 50px;
+//     gap: 20px;
 //     background: rgb(255,255,255);
 //     background: -moz-linear-gradient(90deg, rgba(255,255,255,0.756827731092437) 0%, rgba(228,16,16,1) 37%, rgba(228,16,16,1) 100%);
 //     background: -webkit-linear-gradient(90deg, rgba(255,255,255,0.756827731092437) 0%, rgba(228,16,16,1) 37%, rgba(228,16,16,1) 100%);
@@ -46,37 +43,15 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endCo
 //     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#e41010",GradientType=1);
     
 //     .selected-word {
-//       margin-top: 50px;
-//       margin-bottom: 50px;
-//       display: flex;
-//       flex-direction: column;
-//       align-items: center;
-//       justify-content: center;
-//       width: 150px; // Smaller size
-//       height: 150px;
-//       padding: 5px; // Reduced padding
+//       width: 100px;
+//       padding: 10px;
 //       border: 1px solid #ccc;
 //       text-align: center;
-//       background-color: #f0f0f0;
-//       border-radius: 15%;
-//       border: #000000 2px solid;
-//       cursor: grabbing;
-      
-//       img {
-//         width: 140px; // Smaller image size
-//         height: 100px;
-//         object-fit: cover; // Ensure image fits within the button
-//       }
-
-//       span {
-//         margin-top: 5px;
-//         font-size: 12px; // Smaller font size
-//         color: #333;
-//         font-weight: bold;
-//       }
+//       background-color: #f0f0f0; // Adjust as needed
 //     }
 //   }
 // }
+
 .selected-words-container {
   margin-top: 20px;
   
@@ -125,12 +100,5 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endCo
         font-weight: bold;
       }
     }
-  }
-}
-.selected-word {
-  cursor: pointer;
-  &.dragging {
-    opacity: 0.5; // Reduce opacity to indicate dragging
-    transform: scale(1.1); // Scale up slightly for visual feedback
   }
 }

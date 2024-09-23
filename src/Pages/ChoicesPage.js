@@ -5,6 +5,7 @@ import ControlPanel from '../Components/ControlPanel/ControlPanel';
 import { sounds } from '../Components/WordButton/WordButtonChoices'; 
 
 import './HomePage.scss'; 
+import Draggable from '../Components/Draggable/Draggable';
 
 const words = Object.keys(sounds);
 
@@ -31,7 +32,7 @@ function ChoicesPage() {
     <div className="home-choices">
       <h1>My Words</h1>
       <WordGridChoices words={words} onWordClick={handleWordClick} />
-    
+    {/* <Draggable words={words} onWordClick={handleWordClick}  /> */}
     </div>
   );
 }
