@@ -18,6 +18,9 @@ function Header() {
         <li>
           <NavLink to="/drag">Drag</NavLink>
         </li>
+        <li>
+          <NavLink to="/put-in">Put In</NavLink>
+        </li>
       </ul>
     </nav>
   );
